@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mostafa_hammadi/recipe_app.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MaterialApp(home: RecipeApp()));
 }
 
 class MainApp extends StatelessWidget {

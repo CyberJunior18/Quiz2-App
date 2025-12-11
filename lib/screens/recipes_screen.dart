@@ -14,23 +14,33 @@ class RecipesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          ...recipes.asMap().entries.map((entry) {
-            int index = entry.key;
-            var recipe = entry.value;
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              ...recipes.asMap().entries.map((entry) {
+                int index = entry.key;
+                var recipe = entry.value;
+        
+                return RecipeItem(
+                  recipe: recipe,
+                  index: index,
+                  onSelectRating: onSelectRating,
+                );
+              }),
+        
+              const SizedBox(height: 20),
 
-            return RecipeItem(
-              recipe: recipe,
-              index: index,
-              onSelectRating: onSelectRating,
-            );
-          }),
-
-          const SizedBox(height: 20),
-        ],
+              ElevatedButton(
+                onPressed: onSubmit,
+                child: Text('Submit'),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
